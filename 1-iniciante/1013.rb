@@ -15,6 +15,6 @@ a = input[0].to_i
 b = input[1].to_i
 c = input[2].to_i
 
-ab = (a + b + (a-b).abs)/2
+ab = (a + b + (a-b).abs)/2 #abs é o methodo para modulo
 abc = (ab + c + (ab-c).abs)/2
 puts "#{abc} eh o maior"
