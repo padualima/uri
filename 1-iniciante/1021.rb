@@ -24,9 +24,8 @@
 #                                   2 moeda(s) de R$ 0.10
 #                                   0 moeda(s) de R$ 0.05
 #                                   3 moeda(s) de R$ 0.01
-N = gets.to_f
-if 0 < N && N < 1000000.00
-  n = N
+n = gets.to_f
+if 0 < n && n < 1000000.00
   puts "NOTAS:"
   grades = {a: 100, b: 50 , c: 20, d: 10, e: 5, f: 2}
   grades.each do |k,v|
