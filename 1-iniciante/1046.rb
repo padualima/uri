@@ -14,7 +14,8 @@
 input = gets.split
 start = input[0].to_i
 ends = input[1].to_i
-if (start >= 0 && start <= 24) && (ends >= 0 && ends <= 24)
+case start && ends
+when 0..24
   if start > ends || start == ends
     match = ((start - ends) - 24).abs
   elsif start < ends
