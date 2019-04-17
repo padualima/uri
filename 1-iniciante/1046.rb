@@ -21,5 +21,5 @@ when 0..24
   elsif start < ends
     match = (start - ends).abs
   end
+  puts "O JOGO DUROU #{match} HORA(S)"
 end
-puts "O JOGO DUROU #{match} HORA(S)"

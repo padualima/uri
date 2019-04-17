@@ -10,25 +10,47 @@
 #         7 7 7 7              O JOGO DUROU 24 HORA(S) E 0 MINUTO(S)
 #         7 10 8 9             O JOGO DUROU 0 HORA(S) E 59 MINUTO(S)
 input = gets.split
-start = input[0].to_i
-# start_minute = input[0].to_i
-ends = input[1].to_i
-# end_minute = input[1].to_i
+start_h = input[0].to_i
+start_m = input[1].to_i
+end_h = input[2].to_i
+end_m = input[3].to_i
 
-case start && ends
-when 0..24
-  if start > ends || start == ends
-    match = ((start - ends) - 24).abs
-  elsif start < ends
-    match = (start - ends).abs
+if (start_h >= 0 && start_h <= 24) && (end_h >= 0 && end_h <= 24)
+  if (start_m >= 0 && start_m < 60) && (end_m >= 0 && end_m < 60)
+    if start_h == end_h
+      if start_m == end_m
+        match_h = 24
+        match_m = start_m - end_m
+      elsif start_m > end_m
+        match_h = (start_h - end_h - 23).abs
+        match_m = ((start_m - end_m) - 60).abs
+      elsif start_m < end_m
+        match_h = start_h - end_h
+        match_m = (start_m - end_m).abs
+      end
+    elsif start_h > end_h
+      if start_m == end_m
+        match_h = (start_h - end_h - 24).abs
+        match_m = (start_m - end_m)
+      elsif start_m > end_m
+        match_h = (start_h - end_h - 23).abs
+        match_m = ((start_m - end_m) - 60).abs
+      elsif start_m < end_m
+        match_h = (start_h - end_h - 24).abs
+        match_m = (start_m - end_m).abs
+      end
+    elsif start_h < end_h
+      if start_m == end_m
+        match_h = (start_h - end_h).abs
+        match_m = start_m - end_m
+      elsif start_m > end_m
+        match_h = ((start_h - end_h) + 1).abs
+        match_m = ((start_m - end_m) - 60).abs
+      elsif start_m < end_m
+        match_h = (start_h - end_h).abs
+        match_m = (start_m - end_m).abs
+      end
+    end
+    puts "O JOGO DUROU #{match_h} HORA(S) E #{match_m} MINUTO(S)"
   end
 end
-puts "O JOGO DUROU #{match} HORA(S)"
-
-# if (start_minute >= 0 && start <= 24) && (ends >= 0 && ends <= 24)
-#   if start > ends || start == ends
-#     match = ((start - ends) - 24).abs
-#   elsif start < ends
-#     match = (start - ends).abs
-#   end
-# end
